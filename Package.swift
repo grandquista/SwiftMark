@@ -1,3 +1,4 @@
+// swift-tools-version:4.0
 //
 //  Package.swift
 //  CoreGeometry
@@ -10,6 +11,11 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftMark",
-    targets: [ Target(name: "SwiftMark", dependencies: ["libcmark"])],
-    exclude: ["SwiftMark.xworkspace", "README.md", "LICENCE", "Xcode", "Documentation", "Sources/Classes"]
+    products: [.library(name: "SwiftMark", targets: ["SwiftMark"])],
+    dependencies: [],
+    targets: [
+        .target(name: "libcmark", dependencies: []),
+        .target(name: "SwiftMark", dependencies: ["libcmark"])
+    ],
+    swiftLanguageVersions: [4]
 )
